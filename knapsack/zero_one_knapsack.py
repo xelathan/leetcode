@@ -27,6 +27,20 @@ def main() -> int:
                 dp[i][j] = dp[i - 1][j]
 
     debug_print(dp)
+
+    i = n
+    j = c
+    indices = []
+    while i > 0 and j > 0:
+        if dp[i][j] == dp[i - 1][j]:
+            i -= 1
+        else:
+            indices.append(i - 1)
+            i -= 1
+            j -= weights[i]
+    
+    for i in indices:
+        print(f"Select value {values[i]} with weight {weights[i]}")
     return 0
 
 
